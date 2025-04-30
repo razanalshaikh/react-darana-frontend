@@ -19,11 +19,14 @@ function NavBar() {
                 <div className='navbar-item'>
                     
                 </div>
-                <div class="buttons">
-                    <a class="button is-success">
+                <div className="buttons">
+                    <a className='button is-light'>
+                        EN
+                    </a>
+                    <a className="button is-success">
                     <strong>Sign up</strong>
                     </a>
-                    <a class="button is-light">
+                    <a className="button is-light">
                         Log in
                     </a>
                 </div>
