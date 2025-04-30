@@ -6,7 +6,7 @@ function NavBar() {
         <nav className="navbar is-light" role="navigation" aria-label="main navigation">
             <div className='navbar-brand'>
                 <a className='nav-item' href='/'>
-                    <img src={logo} alt="logo" height='20%' width='30%'/> 
+                    <img src={logo} alt="logo" height='20%' width='50%'/> 
                 </a>  
             </div>
             <div className='navbar-menu'>

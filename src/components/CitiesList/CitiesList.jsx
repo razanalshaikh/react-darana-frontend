@@ -26,8 +26,9 @@ function CitiesList() {
                 {cities.map((city) =>(
                     <li key={city.id}>
                         <div> 
-                            <h2>{city.name}</h2>
-                            <h2>{city.description}</h2>
+                            <h1>
+                                <Link to={`/city/${city.id}`}>{city.name}</Link>
+                            </h1>
                         </div>
                     </li>
                 ))}

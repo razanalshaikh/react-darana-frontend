@@ -6,6 +6,8 @@ import 'bulma/css/bulma.min.css'
 import Home from './pages/home'
 import Cities from './pages/cities'
 import Places from './pages/Places'
+import CityDetails from './pages/CityDetails'
+import NotFound from './pages/NotFound'
 
 function App() {
 
@@ -15,8 +17,11 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='*' element={<NotFound/>}/>
         <Route path='/cities'element={<Cities/>}/>
         <Route path='/places' element={<Places/>}/>
+        <Route path='/city/:id' element={<CityDetails/>}/>
+
       </Routes>
     </Router>
     </>
