@@ -24,12 +24,39 @@ function CityDetails() {
         getSingleCity()
     },[])
 
+    const [deleteConfirm, setDeleteConfirm] = useState(false)
+    async function deleteCity(){
+        try{
+            const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}cities/${id}/`)
+            if(response.status === 202){
+                navigate('/cities')
+            }
+        }catch(error){
+            console.log(error)
+            setErrorMessage('Something went Wrong!')
+        }
+    }
+    function showConfirmDelete() {
+        setDeleteConfirm(true)
+    }
+
     if (errorMessage) return <h1>{errorMessage}</h1>
     if(!city) return  <span className="loader-mixin">{errorMessage}</span>
     return (
         <div>
-            <h1>{city.name}</h1>
-            <h1>{city.description}</h1>
+            <div>
+                <h1>{city.name}</h1>
+                <h1>{city.description}</h1> 
+            </div>
+            <div className='buttons'>
+                {
+                    deleteConfirm 
+                    ?
+                    <button className="button is-danger" onClick={deleteCity}>Are you Sure?</button>
+                    :
+                    <button className="button is-danger" onClick={showConfirmDelete}>Delete</button>
+                }
+            </div>
         </div>
     )
 }
