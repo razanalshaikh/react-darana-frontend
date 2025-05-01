@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams , useNavigate, Link} from 'react-router'
+import FeaturesList from '../components/FeatruesList/FeaturesList'
 
 function CityDetails() {
     const {id} = useParams()
@@ -40,9 +41,12 @@ function CityDetails() {
         setDeleteConfirm(true)
     }
 
+
     if (errorMessage) return <h1>{errorMessage}</h1>
     if(!city) return  <span className="loader-mixin">{errorMessage}</span>
     return (
+
+        <> 
         <div>
             <div>
                 <h1>{city.name}</h1>
@@ -58,8 +62,11 @@ function CityDetails() {
                     :
                     <button className="button is-danger" onClick={showConfirmDelete}>Delete</button>
                 }
-            </div>
+            </div>       
+            <FeaturesList/>
         </div>
+
+        </>
     )
 }
 export default CityDetails
