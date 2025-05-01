@@ -8,6 +8,7 @@ import Cities from './pages/cities'
 import Places from './pages/Places'
 import CityDetails from './pages/CityDetails'
 import NotFound from './pages/NotFound'
+import AddCity from './pages/AddCity'
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
         <Route path='/cities'element={<Cities/>}/>
         <Route path='/places' element={<Places/>}/>
         <Route path='/city/:id' element={<CityDetails/>}/>
-
+        <Route path='/cities/new' element={<AddCity/>}/>
       </Routes>
     </Router>
     </>
