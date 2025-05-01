@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams , useNavigate} from 'react-router'
+import { useParams , useNavigate, Link} from 'react-router'
 
 function CityDetails() {
     const {id} = useParams()
@@ -48,7 +48,9 @@ function CityDetails() {
                 <h1>{city.name}</h1>
                 <h1>{city.description}</h1> 
             </div>
+
             <div className='buttons'>
+                <Link to={`/city/${id}/edit`} className="button is-success"> Edit </Link>
                 {
                     deleteConfirm 
                     ?
