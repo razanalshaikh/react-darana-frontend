@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router'
 import { useState, useEffect } from 'react'
+import CityCard from '../CityCard/CityCard'
 
 function CitiesList() {
     const [cities,setCities] = useState([])
@@ -21,18 +22,18 @@ function CitiesList() {
     },[])
 
     return (
-        <div>
-            <ul>
+        <div className='container'>
+            <div className='columns is-centered is-multiline'>
                 {cities.map((city) =>(
-                    <li key={city.id}>
+                    <div key={city.id} className='column is-one-third'>
                         <div> 
                             <h1>
-                                <Link to={`/city/${city.id}`}>{city.name}</Link>
+                                <Link to={`/city/${city.id}`}><CityCard name = {city.name}/></Link>
                             </h1>
                         </div>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     )
 }
