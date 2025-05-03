@@ -1,9 +1,9 @@
 import React from 'react'
 
- function Places() {
+function Places() {
   return (
     <div>
-         <h1>Places Page</h1>
+        <h1>Places Page</h1>
     </div>
   )
 }
