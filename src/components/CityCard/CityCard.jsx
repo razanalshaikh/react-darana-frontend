@@ -31,7 +31,7 @@ function CityCard(props) {
             <div className='card-image'>
                 <figure className='image is-4by3'>
                     <img 
-                    src="https://bulma.io/assets/images/placeholders/1280x960.png"
+                    src={props.image_url}
                     alt="Placeholder image"
                 />
                 </figure>

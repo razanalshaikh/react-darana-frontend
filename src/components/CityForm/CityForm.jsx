@@ -36,6 +36,14 @@ function CityForm(props) {
                     onChange={event => props.setDescription(event.target.value)}
                     value={props.description}></textarea>
                 </div>
+                <div>
+                    <label htmlFor='imgUpload'>Image</label>
+                    <input
+                    type='file'
+                    accept='image/*'
+                    onChange={event =>props.setImageFile(event.target.files[0])}
+                    />
+                </div>
                 <button type='submit' className='button is-success'>Submit</button>
                 <button type='button' className='button is-light' onClick={handleCancel}>Cancel</button>
             </form>

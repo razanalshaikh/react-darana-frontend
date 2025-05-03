@@ -25,10 +25,10 @@ function CitiesList() {
         <div className='container'>
             <div className='columns is-centered is-multiline'>
                 {cities.map((city) =>(
-                    <div key={city.id} className='column is-one-third'>
+                    <div key={city.id} className='column is-half'>
                         <div> 
                             <h1>
-                                <Link to={`/city/${city.id}`}><CityCard name = {city.name}/></Link>
+                                <Link to={`/city/${city.id}`}><CityCard name = {city.name} image_url = {city.image_url}/></Link>
                             </h1>
                         </div>
                     </div>
