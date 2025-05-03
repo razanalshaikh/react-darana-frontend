@@ -48,12 +48,25 @@ function CityDetails() {
 
         <> 
         <div>
-            <div>
-                <h1>{city.name}</h1>
-                <h1>{city.description}</h1> 
+
+            <div 
+            style={{
+            background: `url(${city.image_url})`, 
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            width:"100vw",
+            height:"80vh"}}>
+                <div className='container pt-6'>
+                    <p className='title has-text-grey-dark is-1'>{city.name}</p>
+                    <p className='is-size-4	'>{city.description}</p>    
+                    <div>
+                        <FeaturesList/>
+                    </div>            
+                </div>
             </div>
 
-            <div className='buttons'>
+            <div className='buttons container'>
                 <Link to={`/city/${id}/edit`} className="button is-success"> Edit </Link>
                 {
                     deleteConfirm 
@@ -63,7 +76,7 @@ function CityDetails() {
                     <button className="button is-danger" onClick={showConfirmDelete}>Delete</button>
                 }
             </div>       
-            <FeaturesList/>
+            
         </div>
 
         </>

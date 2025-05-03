@@ -23,11 +23,11 @@ function FeaturesList() {
     },[])
     
     return (
-        <div>
-        <ul> 
+        <div className='continaer pt-3 pl-5'>
+        <ul className='columns'> 
             {features.map((feature)=>(
-                <li key={feature.id}> 
-                        <h4>{feature.name}</h4>
+                <li key={feature.id} className='column'> 
+                        <p className='has-text-grey-dark is-size-5'>{feature.name}</p>
                 </li>
             ))}
         </ul>

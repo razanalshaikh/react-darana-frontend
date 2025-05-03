@@ -7,6 +7,8 @@ function EditCity() {
     const {id} = useParams()
     const [name,setName] = useState('')
     const [description, setDescription] = useState('')
+    // const [imageURL, setImageURL] = useState('')
+    
     const navigate = useNavigate()
 
     async function getCurrentCityData() {
@@ -14,6 +16,7 @@ function EditCity() {
             const response = await axios.get(`${import.meta.env.VITE_BASE_URL}cities/${id}/`)
             setName(response.data.name)
             setDescription(response.data.description)
+            // setImageURL(response.data.image_url)
         }catch(error){
             console.log(error)
         }     
@@ -44,6 +47,7 @@ function EditCity() {
                 description = {description}
                 setDescription = {setDescription}
                 handleSubmit = {handleSubmit}
+                // imageURL = {imageURL}
             />
         </div>
     )

@@ -17,7 +17,6 @@ function AddCity() {
         const formData = new FormData()
         formData.append('file', imageFile)
         formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET)
-        
         try{
             const cloudinaryResponse = await axios.post(
                 `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_NAME}/image/upload`,
@@ -32,7 +31,6 @@ function AddCity() {
             console.log('handle submit function is running')
             const payload = {name, description, image_url: cloudinaryImgUrl}
             const response = await axios.post(`${import.meta.env.VITE_BASE_URL}cities/`,payload)
-            console.log(response)
             toast('City Information has been Submitted')
             setTimeout(()=>{
                 navigate('/cities')
