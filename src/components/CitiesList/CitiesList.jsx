@@ -22,8 +22,8 @@ function CitiesList() {
     },[])
 
     return (
-        <div className='container'>
-            <div className='columns is-centered is-multiline'>
+        <div className='container mt-6'>
+            <div className='columns is-centered is-multiline mt-3'>
                 {cities.map((city) =>(
                     <div key={city.id} className='column is-half'>
                         <div> 

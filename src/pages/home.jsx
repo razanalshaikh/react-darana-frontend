@@ -9,10 +9,10 @@ export default function home() {
                 <video id="background-video" loop autoPlay muted style={{
                     backgroundPosition: 'fixed',
                     backgroundSize: 'cover',
-                    objectFit: 'cover',
+                    objectFit: 'fill',
                     backgroundRepeat: 'no-repeat',
                     width:"100vw",
-                    height:"100vh"}}>
+                    height:"110vh"}}>
                     <source src="https://res.cloudinary.com/djjjmhhz5/video/upload/q_auto:best/v1746344938/video_yuo2xj.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>

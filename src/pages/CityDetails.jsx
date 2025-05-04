@@ -47,9 +47,10 @@ function CityDetails() {
     return (
 
         <> 
-        <div>
+        <div className='pt-6'>
 
             <div 
+            className='pt-6'
             style={{
             background: `url(${city.image_url})`, 
             backgroundPosition: 'center',
@@ -58,8 +59,8 @@ function CityDetails() {
             width:"100vw",
             height:"80vh"}}>
                 <div className='container pt-6'>
-                    <p className='title has-text-grey-dark is-1'>{city.name}</p>
-                    <p className='is-size-4	'>{city.description}</p>    
+                    <p className='title has-text-black is-1'>{city.name}</p>
+                    <p className='has-text-black is-size-4	'>{city.description}</p>    
                     <div>
                         <FeaturesList/>
                     </div>            

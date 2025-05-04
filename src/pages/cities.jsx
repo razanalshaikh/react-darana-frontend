@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 function Cities() {
     return (
 
-    <div className='container is-max-widescreen mt-3'>
+    <div className='container is-max-widescreen mt-6'>
         <h1 className='title has-text-black '>Cities: </h1>
         <CitiesList/>
         <div className='is-flex is-justify-content-flex-end mt-4'>

@@ -13,6 +13,7 @@ function AddCity() {
 
     async function handleSubmit() {
         event.preventDefault()
+        console.log(imageFile)
         let cloudinaryImgUrl = ''
         const formData = new FormData()
         formData.append('file', imageFile)
@@ -52,7 +53,7 @@ function AddCity() {
                 handleSubmit = {handleSubmit}                
                 setImageFile={setImageFile}
             />
-                <ToastContainer position='top-center'/>
+            <ToastContainer position='top-center'/>
         </div>
     )
 }
