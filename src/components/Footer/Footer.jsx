@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
 return (
-            <div>
+            <div className='mt-6'>
                 <footer className="footer has-background-light">
                     <div className="content has-text-centered has-text-grey-dark">
                     <p>

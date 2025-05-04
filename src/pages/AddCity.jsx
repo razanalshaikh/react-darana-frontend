@@ -42,7 +42,7 @@ function AddCity() {
     }
 
     return (
-        <div>
+        <div> 
             <CityForm
                 titleVerb = 'Add New City'
                 name = {name}
