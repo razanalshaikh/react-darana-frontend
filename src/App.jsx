@@ -9,6 +9,7 @@ import CityDetails from './pages/CityDetails'
 import NotFound from './pages/NotFound'
 import AddCity from './pages/AddCity'
 import EditCity from './pages/EditCity'
+import Footer from './components/Footer/Footer'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='/city/:id/edit'element={<EditCity/>}></Route>
       </Routes>
     </Router>
+    <Footer/>
     </>
   )
 }
