@@ -23,11 +23,24 @@ function FeaturesList() {
     },[])
     
     return (
-        <div className='continaer pt-3 pl-5'>
+        <div className='continaer pt-3 pl-2'>
         <ul className='columns'> 
             {features.map((feature)=>(
-                <li key={feature.id} className='column'> 
-                        <p className='has-text-grey-dark is-size-5'>{feature.name}</p>
+                <li 
+                key={feature.id} 
+                className='column' > 
+                <div 
+                    className='box has-background-light has-text-dark is-radius-rounded is-align-items-center is-justify-content-center'
+                    style={{ 
+                        display: 'flex',
+                        width: '14vw',
+                        height: '8vh',
+                        margin: '16px',
+                        border: '2px solid #ccc'
+                    }}
+                    >
+                    <p className='title has-text-grey-dark is-size-5'>{feature.name}</p>
+                </div>
                 </li>
             ))}
         </ul>
