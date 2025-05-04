@@ -60,7 +60,7 @@ function CityDetails() {
             height:"80vh"}}>
                 <div className='container pt-6'>
                     <p className='title has-text-black is-1'>{city.name}</p>
-                    <p className='has-text-black is-size-4	'>{city.description}</p>    
+                    <p className='has-text-grey-dark is-size-4	'>{city.description}</p>    
                     <div>
                         <FeaturesList/>
                     </div>            

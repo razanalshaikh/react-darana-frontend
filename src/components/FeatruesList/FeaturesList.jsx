@@ -23,19 +23,16 @@ function FeaturesList() {
     },[])
     
     return (
-        <div className='continaer pt-3 pl-2'>
-        <ul className='columns'> 
+        <div className='continaer pt-1 pl-1'>
+        <ul className='is-flex is-flex-wrap-wrap'> 
             {features.map((feature)=>(
                 <li 
-                key={feature.id} 
-                className='column' > 
+                key={feature.id} className='m-3'> 
                 <div 
-                    className='box has-background-light has-text-dark is-radius-rounded is-align-items-center is-justify-content-center'
+                    className='box has-background-light has-text-dark is-radius-rounded is-flex is-align-items-center is-justify-content-center m-0'
                     style={{ 
-                        display: 'flex',
                         width: '14vw',
                         height: '8vh',
-                        margin: '16px',
                         border: '2px solid #ccc'
                     }}
                     >
