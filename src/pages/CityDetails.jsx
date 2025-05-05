@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams , useNavigate, Link} from 'react-router'
 import FeaturesList from '../components/FeatruesList/FeaturesList'
+import PlacesList from '../components/PlacesList/PlacesList'
 
 function CityDetails() {
     const {id} = useParams()
@@ -47,7 +48,7 @@ function CityDetails() {
     return (
 
         <> 
-        <div className='pt-6'>
+        <div className='mt-6 pt-6'>
 
             <div 
             className='pt-6'
@@ -67,7 +68,7 @@ function CityDetails() {
                 </div>
             </div>
 
-            <div className='buttons container'>
+            <div className='buttons container mt-2'>
                 <Link to={`/city/${id}/edit`} className="button is-success"> Edit </Link>
                 {
                     deleteConfirm 
@@ -76,7 +77,11 @@ function CityDetails() {
                     :
                     <button className="button is-danger" onClick={showConfirmDelete}>Delete</button>
                 }
-            </div>       
+            </div> 
+            <div className='container mt-4'>
+                <h1 className='title has-text-black is-2'>Places:</h1>
+                <PlacesList/>
+            </div>      
             
         </div>
 

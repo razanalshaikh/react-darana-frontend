@@ -7,6 +7,7 @@ function CityCard(props) {
     const [iconURL, setIconURL] = useState(null)
 
     async function getWeather() {
+        
         try{
             const response = await axios({
                         method: 'get',

@@ -10,6 +10,10 @@ import NotFound from './pages/NotFound'
 import AddCity from './pages/AddCity'
 import EditCity from './pages/EditCity'
 import Footer from './components/Footer/Footer'
+import PlacesList from './components/PlacesList/PlacesList'
+import PlaceDetails from './pages/PlaceDetails'
+import EditPlace from './pages/EditPlace'
+import AddPlace from './pages/AddPlace'
 
 function App() {
 
@@ -21,10 +25,15 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='*' element={<NotFound/>}/>
         <Route path='/cities'element={<Cities/>}/>
-        <Route path='/places' element={<Places/>}/>
         <Route path='/city/:id' element={<CityDetails/>}/>
         <Route path='/cities/new' element={<AddCity/>}/>
         <Route path='/city/:id/edit'element={<EditCity/>}></Route>
+        <Route path='/places' element={<Places/>}/>
+        <Route path='/city/:id/places' element ={<PlacesList/>} />
+        <Route path='/places/:id' element ={<PlaceDetails/>}/>
+        <Route path='/places/:id/edit' element ={<EditPlace/>}/>
+        <Route path='/places/new' element ={<AddPlace/>}/>
+        
       </Routes>
     </Router>
     <Footer/>

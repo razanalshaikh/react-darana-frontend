@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import { useParams } from 'react-router'
 import axios from 'axios'
-
+import { Link } from 'react-router'
 function FeaturesList() {
     const {id} = useParams()
     const [features,setFeatures] = useState([])
@@ -32,8 +32,8 @@ function FeaturesList() {
                     className='box has-background-light has-text-dark is-radius-rounded is-flex is-align-items-center is-justify-content-center m-0'
                     style={{ 
                         width: '14vw',
-                        height: '8vh',
-                        border: '2px solid #ccc'
+                        height: '6vh',
+                        border: '2px solid #299082'
                     }}
                     >
                     <p className='title has-text-grey-dark is-size-5'>{feature.name}</p>
@@ -42,6 +42,7 @@ function FeaturesList() {
             ))}
         </ul>
     </div>
+    
     )
 }
 export default FeaturesList
