@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react'
 import { useParams } from 'react-router'
 import axios from 'axios'
 import { Link } from 'react-router'
+
 function FeaturesList() {
     const {id} = useParams()
     const [features,setFeatures] = useState([])
@@ -40,6 +41,9 @@ function FeaturesList() {
                 </div>
                 </li>
             ))}
+            <div className='buttons container mt-2'>
+                <Link to={`/${id}/features/edit`} className="button is-success"> Edit </Link>
+            </div>
         </ul>
     </div>
     

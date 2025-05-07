@@ -76,7 +76,7 @@ function CityDetails() {
                     <p className='has-text-grey-dark is-size-4	'>{city.description}</p>    
                     <div>
                         <FeaturesList/>
-                    </div>            
+                    </div>      
                 </div>
             </div>
 

@@ -17,6 +17,7 @@ import EditPlace from './pages/EditPlace'
 import AddPlace from './pages/AddPlace'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login'
+import FeatureForm from './components/FeatureForm/FeatureForm'
 function App() {
 
     const [loggedin,setLoggedin] = useState(false)
@@ -50,6 +51,7 @@ function App() {
         <Route path='/places/new' element ={<AddPlace/>}/>
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login setLoggedin ={setLoggedin}/>} />
+        <Route path='/:id/features/edit' element= {<FeatureForm/>}/> 
       </Routes> 
       <Footer/>
     </Router>
