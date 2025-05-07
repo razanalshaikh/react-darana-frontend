@@ -81,23 +81,21 @@ function EditCity() {
             }
         }else{
             try{             
-                const response = await authorizedRequest(
+                const response = authorizedRequest(
                     'patch',
                     `cities/${id}/`,
                     {name,description,image_url:imageURL}
                 )
-                
-                if(response.status === 200){
-                    toast.success('City Information has been Submitted')
-                    setTimeout(()=>{
-                        navigate(`/city/${id}`)
-                    },3500)
-                }
                 if(response.status === 401){
                     toast.error("Unauthorized access")
                     setTimeout(()=>{
                         navigate(`/login`)
                     },4500)
+                }else{
+                    toast.success('City Information has been Submitted')
+                    setTimeout(()=>{
+                        navigate(`/city/${id}`)
+                    },3500)
                 }
                 }catch(error){
                     toast("Something Went Wrong!")

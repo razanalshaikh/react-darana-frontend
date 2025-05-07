@@ -36,7 +36,7 @@ function AddPlace() {
         }
         try{
             console.log('handle submit function is running')
-            const response = authorizedRequest(
+            const response = await authorizedRequest(
                 'POST',
                 `places/`,
                 {name, description, city: city, category, image_url: cloudinaryImgUrl}

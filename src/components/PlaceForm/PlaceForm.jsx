@@ -14,10 +14,6 @@ function PlaceForm(props) {
     async function getCategories() {
         try{
             const response = await axios.get(`${import.meta.env.VITE_BASE_URL}categories`)
-            // const response = authorizedRequest(
-            //     'get',
-            //     'categories'
-            // )
             console.log(response.data)
             setCategories(response.data)
         }catch(error){
@@ -28,10 +24,6 @@ function PlaceForm(props) {
     async function getAllCities() {
         try{
             const response = await axios.get(`${import.meta.env.VITE_BASE_URL}cities`)
-            // const response = authorizedRequest(
-            //     'get',
-            //     'cities'
-            // )
             console.log(response)
             setCities(response.data)
         }catch(err){

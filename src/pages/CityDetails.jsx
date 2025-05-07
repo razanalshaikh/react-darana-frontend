@@ -31,7 +31,7 @@ function CityDetails() {
     const [deleteConfirm, setDeleteConfirm] = useState(false)
     async function deleteCity(){
         try{
-            const response = authorizedRequest(
+            const response = await authorizedRequest(
                 'delete',
                 `cities/${id}/`
             )
@@ -42,7 +42,7 @@ function CityDetails() {
                 },4000)
             }
         }catch(error){
-            if(error.request.status === 401){
+            if(error.response.status === 401){
                 toast.error("Unauthorized Access!")
             }else{
                 console.log(error)

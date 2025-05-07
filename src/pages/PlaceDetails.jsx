@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router'
 import axios from 'axios'
 import { Link } from 'react-router'
 import { ToastContainer, toast} from 'react-toastify'
+import { authorizedRequest } from '../lib/api'
 function PlaceDetails() {
     const { id } = useParams()
     const [place, setPlace] = useState(null)
@@ -24,19 +25,23 @@ function PlaceDetails() {
         }
     }
     const [deleteConfirm, setDeleteConfirm] = useState(false)
-    async function deleteCity(){
+    async function deletePlace(){
         try{
-            const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}places/${id}/`)
+            const response = await authorizedRequest('delete',
+                `places/${id}/`)
+            console.log(response)
             if(response.status === 200){
-                navigate("/places")
+                    toast.success('Place Deleted Successfully!')
+                    setTimeout(()=>{
+                        navigate("/places")
+                        },4000)
             }
         }catch(error){
             console.log(error)
-            if(error.request.status === 401){
-                toast.error("Unauthorized access")
-            }else{
-                console.log(error)
-                setErrorMessage('Something went Wrong!')
+            if (error.response && error.response.status === 401) {
+                toast.error("Unauthorized Access!")
+            } else {
+                toast.error('Something went Wrong!')
             }
         }
     }
@@ -77,7 +82,7 @@ function PlaceDetails() {
                 {
                     deleteConfirm 
                     ?
-                    <button className="button is-danger" onClick={deleteCity}>Are you Sure?</button>
+                    <button className="button is-danger" onClick={deletePlace}>Are you Sure?</button>
                     :
                     <button className="button is-danger" onClick={showConfirmDelete}>Delete</button>
                 }
