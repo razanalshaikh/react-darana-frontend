@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router,Routes,Route } from 'react-router'
+import { useState,useEffect } from 'react'
 import NavBar from './components/NavBar/NavBar'
 import 'bulma/css/bulma.min.css'
 import Home from './pages/home'
@@ -18,13 +19,23 @@ import SignUp from './pages/SignUp'
 import Login from './pages/Login'
 function App() {
 
-
-
+    const [loggedin,setLoggedin] = useState(false)
+    function logout(){
+        setLoggedin(false)
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('refresh_token')
+        window.location.href = '/login'
+    } 
+    useEffect(()=>{
+      const access = localStorage.getItem('access_token')
+      setLoggedin(access!==null)
+  })
   return (
+    
   
     <>
     <Router>   
-      <NavBar/>
+      <NavBar loggedin={loggedin} logout={logout} />
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='*' element={<NotFound/>}/>
@@ -38,7 +49,7 @@ function App() {
         <Route path='/places/:id/edit' element ={<EditPlace/>}/>
         <Route path='/places/new' element ={<AddPlace/>}/>
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login setLoggedin ={setLoggedin}/>} />
       </Routes> 
       <Footer/>
     </Router>

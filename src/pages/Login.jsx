@@ -4,7 +4,7 @@ import { setTokens } from '../lib/api'
 import axios from 'axios'
 import { ToastContainer,toast } from 'react-toastify'
 
-function Login() {
+function Login(props) {
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
@@ -30,6 +30,7 @@ function Login() {
                 })
                 if(response.status === 200){
                     toast.success('logged in Successfully!')
+                    props.setLoggedin(true)
                     setTimeout(()=>{
                         navigate('/cities')
                     },3500)

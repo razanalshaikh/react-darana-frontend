@@ -4,19 +4,8 @@ import { Link } from 'react-router'
 import SignUp from '../../pages/SignUp'
 import Login from '../../pages/Login'
 
-function NavBar() {
-    const [loggedin,setLoggedin] = useState(false)
-    function logout(){
-        setLoggedin(false)
-        localStorage.removeItem('access_token')
-        localStorage.removeItem('refresh_token')
-        window.location.href = '/login'
-    } 
-
-    useEffect(()=>{
-        const access = localStorage.getItem('access_token')
-        setLoggedin(access!==null)
-    })
+function NavBar(props) {
+    
     return (
         <nav className="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
             <div className='navbar-brand'>
@@ -39,13 +28,13 @@ function NavBar() {
                         EN
                     </a>
                     {
-                        loggedin? '' : <Link to="/signup" className="button is-success">
+                        props.loggedin? '' : <Link to="/signup" className="button is-success">
                         <strong>Sign up</strong>
                         </Link>
                     }
                     
-                    {loggedin?
-                        <Link to="/"className="button is-danger is-dark" onClick={logout}>
+                    { props.loggedin?
+                        <Link to="/"className="button is-danger is-dark" onClick={props.logout}>
                             Logout
                         </Link> :
                         <Link to="/login"className="button is-light" >
