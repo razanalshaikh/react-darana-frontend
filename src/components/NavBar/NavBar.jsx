@@ -7,19 +7,16 @@ import Login from '../../pages/Login'
 function NavBar() {
     const [loggedin,setLoggedin] = useState(false)
     function logout(){
+        setLoggedin(false)
         localStorage.removeItem('access_token')
         localStorage.removeItem('refresh_token')
         window.location.href = '/login'
     } 
-    function handleClick(){   
+
+    useEffect(()=>{
         const access = localStorage.getItem('access_token')
-        if (access !== null){
-            setLoggedin(true)
-        }else{
-            setLoggedin(false)
-            logout()  
-        }
-    }
+        setLoggedin(access!==null)
+    })
     return (
         <nav className="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
             <div className='navbar-brand'>
@@ -41,12 +38,21 @@ function NavBar() {
                     <a className='button is-light'>
                         EN
                     </a>
-                    <Link to="/signup" className="button is-success">
-                    <strong>Sign up</strong>
-                    </Link>
-                    <Link to="/"className="button is-light" onClick={handleClick}>
-                            {loggedin? 'Logout' :"Login"}
-                    </Link>
+                    {
+                        loggedin? '' : <Link to="/signup" className="button is-success">
+                        <strong>Sign up</strong>
+                        </Link>
+                    }
+                    
+                    {loggedin?
+                        <Link to="/"className="button is-danger is-dark" onClick={logout}>
+                            Logout
+                        </Link> :
+                        <Link to="/login"className="button is-light" >
+                        Login
+                        </Link>
+                    }
+                    
                     
                 </div>
             </div>
