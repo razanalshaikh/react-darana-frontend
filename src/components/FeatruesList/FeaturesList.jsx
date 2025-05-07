@@ -42,7 +42,8 @@ function FeaturesList() {
                 </li>
             ))}
             <div className='buttons container mt-2'>
-                <Link to={`/${id}/features/edit`} className="button is-success"> Edit </Link>
+                <button to={`/${id}/features/edit`} className="button is-success" disabled> 
+                {features.length === 0 ? 'Add' : 'edit'} </button>
             </div>
         </ul>
     </div>

@@ -64,7 +64,7 @@ function EditCity() {
                     payload
                 )
                 if(respone.status === 200){
-                    toast('City Information has been Submitted')
+                    toast.success('City Information has been Submitted')
                     setTimeout(()=>{
                         navigate(`/city/${id}`)
                     },3500)
@@ -81,7 +81,7 @@ function EditCity() {
             }
         }else{
             try{             
-                const response = authorizedRequest(
+                const response = await authorizedRequest(
                     'patch',
                     `cities/${id}/`,
                     {name,description,image_url:imageURL}
@@ -120,7 +120,7 @@ function EditCity() {
                 handleSubmit = {handleSubmit}
                 setImageFile={setImageFile}
             />
-            <ToastContainer  position='top-center' icon ={false}/>
+            <ToastContainer  position='top-center'/>
         </div>
     )
 }

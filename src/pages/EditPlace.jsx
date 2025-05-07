@@ -80,7 +80,7 @@ function EditPlace() {
             }
         }else{
             try{    
-            const response = authorizedRequest(
+            const response = await authorizedRequest(
                 'patch',
                 `places/${id}/`,
                 {name,description, city, category, image_url:imageURL}
