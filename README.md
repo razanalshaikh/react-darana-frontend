@@ -1,13 +1,69 @@
-# React + Vite
+# Darana Website (دارنا) 
+Darana (meaning "Our Home" in Arabic) is a website dedicated to showcasing the beauty, culture, and hidden gems of Saudi Arabia.
+Through Darana, visitors can explore cities, discover historic sites, entertainment spots, cafes, and restaurants across the Kingdom.
+The name reflects a deep connection to the homeland — Saudi Arabia as a shared "home" full of treasures to experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Repository Description
 
-Currently, two official plugins are available:
+This repository contains the frontend codebase of the application, built using React.js. The project is structured to separate concerns clearly for better scalability and maintainability.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Folder Structure
 
-## Expanding the ESLint configuration
+- **`pages/`**  
+  Contains all the main pages of the website. Each file or folder in this directory represents a route or view in the application.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# react-darana-frontend
+- **`components/`**  
+  Reusable UI components used across different pages (e.g., buttons, forms, modals, etc.).
+
+- **`lib/api.js`**  
+  Contains API utility functions including:
+  - Authorized HTTP request handler
+  - Token management (setToken, refreshToken, etc.)
+  - Centralized API call logic
+
+- **`App.jsx`**  
+  Main application component that defines all client-side routes using React Router.
+
+
+## Tech Stack
+- **JavaScript** – Main programming language
+- **React.js** – Frontend library for building the user interface
+- **React Router** – Handles client-side routing
+- **Axios** – For making HTTP requests to APIs
+- **React Toastify** – Provides toast notifications
+- **Bulma CSS** – Modern CSS framework for styling
+- **Cloudinary** – use to uplaod images to cloud.
+
+## Backend Repository
+You can find the backend code here: [Backend Repository Link](https://git.generalassemb.ly/razanalshaikh/django-darana-backend.git)
+
+## Installation Instructions
+### Run Locally
+1. Clone the repository:  
+  ` git clone https://git.generalassemb.ly/razanalshaikh/react-darana-frontend.git `
+2. Navigate to the project directory
+    `cd react-darana-frontend`
+3. Install dependencies: 
+    `npm install`
+4. Start the development Server
+    `npm start`
+5. Run the project
+    `npm run dev`
+    
+## Screenshots
+| Description | Screenshot                              |
+| ----------- | --------------------------------------- |
+| Homepage    | ![Homepage](screenshots/HomePageFrontend.jpg)   |
+| Cities Page  | ![cities](screenshots/citiesFrontend.jpg)           |
+| Places Page   | ![places](screenshots/placesFrontend.jpg) |
+
+## IceBox Features
+- Buttons for editing deleteing or adding only will be showed for admin or staff users.
+- Create a page for adding or editing features.
+- Add maps and location for places.
+- Add reviews and rating for places.
+- Save places for users side as want to go list.
+- Cerate a catergory model to make places displayed by categories.
+- Add more images and description for each place and each city.
+- Add search buttons, where user searched for places and cities.
+
