@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function home() {
-
+    const VIDEO_URL = `https://res.cloudinary.com/${import.meta.env.VITE_CLOUDINARY_NAME}/video/upload/q_auto:best/v1746344938/video_yuo2xj.mp4`
     return (
         <div>
             <div>
@@ -13,7 +13,7 @@ export default function home() {
                     backgroundRepeat: 'no-repeat',
                     width:"100vw",
                     height:"110vh"}}>
-                    <source src="https://res.cloudinary.com/djjjmhhz5/video/upload/q_auto:best/v1746344938/video_yuo2xj.mp4" type="video/mp4" />
+                    <source src={VIDEO_URL} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>

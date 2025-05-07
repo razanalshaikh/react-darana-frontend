@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import { useState } from 'react'
+import { authorizedRequest } from '../lib/api'
 
 function AddPlace() {
     
@@ -16,8 +17,6 @@ function AddPlace() {
     const [category,setCategory] = useState('')
 
     async function handleSubmit() {
-        console.log(cityId)
-        console.log(city)
         event.preventDefault()
         console.log(imageFile)
         let cloudinaryImgUrl = ''
@@ -33,17 +32,28 @@ function AddPlace() {
             console.log('Cloudinary Image URL:', cloudinaryImgUrl);
         }catch(error){
             console.log(error)
+            toast.error('Unable to uplaod Image!')
         }
         try{
             console.log('handle submit function is running')
-            const payload = {name, description, city: cityId, category, image_url: cloudinaryImgUrl}
-            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}places/`,payload)
-            toast('Place Information has been Submitted')
-            setTimeout(()=>{
-                navigate('/places')
-            },4000)
+            const response = authorizedRequest(
+                'POST',
+                `places/`,
+                {name, description, city: city, category, image_url: cloudinaryImgUrl}
+            )
+            console.log(response.status)
+            if(response.status === 201){
+                toast.success('Place Information has been Submitted')
+                setTimeout(()=>{
+                        navigate('/places')
+                    },3000)
+            }
         }catch(err){
-            console.log(err)
+            if(err.request.status === 401){
+                    toast.error("Unauthorized access")
+                }else{
+                    toast.error('Something Went Wrong!')
+                }
         }
     }
     return (

@@ -14,13 +14,17 @@ import PlacesList from './components/PlacesList/PlacesList'
 import PlaceDetails from './pages/PlaceDetails'
 import EditPlace from './pages/EditPlace'
 import AddPlace from './pages/AddPlace'
-
+import SignUp from './pages/SignUp'
+import Login from './pages/Login'
 function App() {
 
+
+
   return (
+  
     <>
-    <NavBar/>
-    <Router>
+    <Router>   
+      <NavBar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='*' element={<NotFound/>}/>
@@ -33,10 +37,11 @@ function App() {
         <Route path='/places/:id' element ={<PlaceDetails/>}/>
         <Route path='/places/:id/edit' element ={<EditPlace/>}/>
         <Route path='/places/new' element ={<AddPlace/>}/>
-        
-      </Routes>
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login />} />
+      </Routes> 
+      <Footer/>
     </Router>
-    <Footer/>
     </>
   )
 }

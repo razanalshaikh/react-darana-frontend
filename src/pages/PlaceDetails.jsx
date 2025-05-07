@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import axios from 'axios'
 import { Link } from 'react-router'
-
+import { ToastContainer, toast} from 'react-toastify'
 function PlaceDetails() {
     const { id } = useParams()
     const [place, setPlace] = useState(null)
@@ -16,7 +16,7 @@ function PlaceDetails() {
             setPlace(response.data)
             console.log(response.data)
         } catch (error) {
-            if (error.response?.status === 404) {
+            if (error.request.status === 404) {
                 navigate('/Not-Found')
             } else {
                 setErrorMessage('Something went wrong! Try again in a few minutes.')
@@ -32,7 +32,12 @@ function PlaceDetails() {
             }
         }catch(error){
             console.log(error)
-            setErrorMessage('Something went Wrong!')
+            if(error.request.status === 401){
+                toast.error("Unauthorized access")
+            }else{
+                console.log(error)
+                setErrorMessage('Something went Wrong!')
+            }
         }
     }
     function showConfirmDelete() {
@@ -77,6 +82,7 @@ function PlaceDetails() {
                     <button className="button is-danger" onClick={showConfirmDelete}>Delete</button>
                 }
                 </div> 
+                <ToastContainer position='top-center'/>
         </div>
     )
 }

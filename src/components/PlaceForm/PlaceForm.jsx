@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 import { useEffect } from 'react'
+import { authorizedRequest } from '../../lib/api'
 
 
 function PlaceForm(props) {
@@ -13,6 +14,10 @@ function PlaceForm(props) {
     async function getCategories() {
         try{
             const response = await axios.get(`${import.meta.env.VITE_BASE_URL}categories`)
+            // const response = authorizedRequest(
+            //     'get',
+            //     'categories'
+            // )
             console.log(response.data)
             setCategories(response.data)
         }catch(error){
@@ -23,6 +28,10 @@ function PlaceForm(props) {
     async function getAllCities() {
         try{
             const response = await axios.get(`${import.meta.env.VITE_BASE_URL}cities`)
+            // const response = authorizedRequest(
+            //     'get',
+            //     'cities'
+            // )
             console.log(response)
             setCities(response.data)
         }catch(err){
@@ -111,11 +120,10 @@ function PlaceForm(props) {
                                 </div>
                     </div>
                     <div className='field is-grouped'>
-                    <button type='submit' className='button is-success '>Submit</button>
-                    <button type='button' className='button is-light' onClick={handleCancel}>Cancel</button>
+                        <button type='submit' className='button is-success '>Submit</button>
+                        <button type='button' className='button is-light' onClick={handleCancel}>Cancel</button>
                     </div>
                 </form>
-                
             </div>  
         </div>
     )

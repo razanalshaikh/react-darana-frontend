@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams , useNavigate, Link} from 'react-router'
 import FeaturesList from '../components/FeatruesList/FeaturesList'
 import PlacesList from '../components/PlacesList/PlacesList'
+import { authorizedRequest } from '../lib/api'
+import { toast, ToastContainer } from 'react-toastify'
 
 function CityDetails() {
     const {id} = useParams()
@@ -15,7 +17,7 @@ function CityDetails() {
             const response = await axios.get(`${import.meta.env.VITE_BASE_URL}cities/${id}`)
             setCity(response.data)
         }catch(err){
-            if(err.status === 404){
+            if(err.request.status === 404){
                 navigate('/Not-Found')
             }else{
                 setErrorMessage('something went wrong! Try again in a few minutes.')
@@ -29,13 +31,20 @@ function CityDetails() {
     const [deleteConfirm, setDeleteConfirm] = useState(false)
     async function deleteCity(){
         try{
-            const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}cities/${id}/`)
+            const response = authorizedRequest(
+                'delete',
+                `cities/${id}/`
+            )
             if(response.status === 202){
                 navigate('/cities')
             }
         }catch(error){
-            console.log(error)
-            setErrorMessage('Something went Wrong!')
+            if(error.request.status === 401){
+                toast.error("Unauthorized Access!")
+            }else{
+                console.log(error)
+                toast.error('Something went Wrong!')
+            }
         }
     }
     function showConfirmDelete() {
@@ -82,9 +91,9 @@ function CityDetails() {
                 <h1 className='title has-text-black is-2'>Places:</h1>
                 <PlacesList/>
             </div>      
-            
+            <ToastContainer position='top-center'/>
         </div>
-
+        
         </>
     )
 }

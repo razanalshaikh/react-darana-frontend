@@ -3,6 +3,7 @@ import React, { use, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import CityForm from '../components/CityForm/CityForm'
 import { ToastContainer, toast } from 'react-toastify'
+import { authorizedRequest } from '../lib/api'
 
 function EditCity() {
     const {id} = useParams()
@@ -15,12 +16,19 @@ function EditCity() {
 
     async function getCurrentCityData() {
         try{
-            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}cities/${id}/`)
+            const response = await axios.get(
+                `${import.meta.env.VITE_BASE_URL}cities/${id}/`
+            )
             setName(response.data.name)
             setDescription(response.data.description)
             setImageURL(response.data.image_url)
-        }catch(error){
+        }catch(error){  
             console.log(error)
+            if(error.request.status === 401){
+                toast.error('Unauthorized access 401')
+            }else{
+                toast.error("Something Went Wrong!")
+            }
         }     
     }
 
@@ -48,26 +56,49 @@ function EditCity() {
             try{
                 console.log('handle submit function is running')
                 const payload = {name, description, image_url: cloudinaryImgUrl}
-                const response = await axios.patch(`${import.meta.env.VITE_BASE_URL}cities/${id}/`,payload)
-                toast('City Information has been Submitted')
-                setTimeout(()=>{
-                    navigate(`/city/${id}`)
-                },3500)
+                const respone = authorizedRequest(
+                    'patch',
+                    `cities/${id}/`,
+                    payload
+                )
+                if(respone.status === 200){
+                    toast('City Information has been Submitted')
+                    setTimeout(()=>{
+                        navigate(`/city/${id}`)
+                    },3500)
+                }
             }catch(err){
-                console.log(err)
+                if(err.request.status === 401){
+                    toast.error("Unauthorized access")
+                    setTimeout(()=>{
+                        navigate(`/login`)
+                    },3500)
+                }else{
+                    toast("Something Went Wrong!")
+                }
             }
         }else{
             try{    
-            const response = await axios.patch(
-                `${import.meta.env.VITE_BASE_URL}cities/${id}/`,
-                {name,description,image_url:imageURL})
-            toast('City Information has been Submitted')
-            setTimeout(()=>{
-                    navigate(`/city/${id}`)
-                },3500)
-            
-            }catch(error){
-            console.log(error)
+                const response = authorizedRequest(
+                    'patch',
+                    `cities/${id}/`,
+                    {name,description,image_url:imageURL}
+                )
+                
+                if(response.status === 200){
+                    toast('City Information has been Submitted')
+                    setTimeout(()=>{
+                        navigate(`/city/${id}`)
+                    },3500)
+                }
+                if(response.status === 401){
+                    toast.error("Unauthorized access")
+                    setTimeout(()=>{
+                        navigate(`/login`)
+                    },4500)
+                }
+                }catch(error){
+                    toast("Something Went Wrong!")
             }
         }
     }
@@ -88,7 +119,6 @@ function EditCity() {
                 setImageFile={setImageFile}
             />
                 <ToastContainer position='top-center'/>
-            
         </div>
     )
 }

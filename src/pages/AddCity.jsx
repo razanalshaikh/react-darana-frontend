@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router'
 import CityForm from '../components/CityForm/CityForm'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
+import { authorizedRequest } from '../lib/api'
 
 function AddCity() {
     const [name,setName] = useState('')
@@ -31,12 +32,22 @@ function AddCity() {
         try{
             console.log('handle submit function is running')
             const payload = {name, description, image_url: cloudinaryImgUrl}
-            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}cities/`,payload)
-            toast('City Information has been Submitted')
-            setTimeout(()=>{
-                navigate('/cities')
-            },4000)
+            const response = authorizedRequest(
+                'post',
+                `cities/`,
+                payload
+            )     
+            if(response.status ===201){
+                toast.success('City Information has been Submitted')
+                setTimeout(()=>{
+                    navigate('/cities')
+                },4000)
+            }
+            if(response.status === 401){
+                toast.error("Unauthorized access")
+            }
         }catch(err){
+            toast.error('Something Went Wrong!')
             console.log(err)
         }
 

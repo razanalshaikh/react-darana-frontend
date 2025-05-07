@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react'
 import PlaceForm from '../components/PlaceForm/PlaceForm'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
+import { authorizedRequest } from '../lib/api'
 
 function EditPlace() {
 
@@ -20,6 +21,7 @@ function EditPlace() {
     async function getCurrentPlaceData() {
         try{
             const response = await axios.get(`${import.meta.env.VITE_BASE_URL}places/${id}/`)
+            
             setName(response.data.name)
             setDescription(response.data.description)
             setImageURL(response.data.image_url)
@@ -56,26 +58,48 @@ function EditPlace() {
                 console.log('handle submit function is running')
                 const payload = {name, description, city,category, image_url: cloudinaryImgUrl}
                 console.log(payload)
-                const response = await axios.patch(`${import.meta.env.VITE_BASE_URL}places/${id}/`,payload)
-                toast('Place Information has been Submitted')
-                setTimeout(()=>{
-                    navigate(`/places/${id}`)
-                },3500)
+                const response = authorizedRequest(
+                    'patch',
+                    `${import.meta.env.VITE_BASE_URL}places/${id}/`,
+                    payload
+                )
+                if(response.status === 200){
+                    toast.success('Place Information has been Submitted')
+                    setTimeout(()=>{
+                        navigate(`/places/${id}`)
+                    },3500)
+                }
+                if(response.status === 401){
+                    toast.error("Unauthorized access")
+                    setTimeout(()=>{
+                        navigate(`/login`)
+                    },3500)
+                }
             }catch(err){
-                console.log(err)
+                toast.error('Something Went Wrong!')
             }
         }else{
             try{    
-            const response = await axios.patch(
-                `${import.meta.env.VITE_BASE_URL}places/${id}/`,
-                {name,description, city, category, image_url:imageURL})
-            toast('Place Information has been Submitted')
-            setTimeout(()=>{
-                    navigate(`/places/${id}`)
+            const response = authorizedRequest(
+                'patch',
+                `places/${id}/`,
+                {name,description, city, category, image_url:imageURL}
+            )
+                if(response.status === 200){
+                    toast.success('Place Information has been Submitted')
+                    setTimeout(()=>{
+                        navigate(`/places/${id}`)
+                    },3500)
+                }
+                if(response.status === 401){
+                toast.error("Unauthorized access")
+                setTimeout(()=>{
+                    navigate(`/login`)
                 },3500)
+                }
             
             }catch(error){
-            console.log(error)
+                toast.error('Something Went Wrong!')
             }
         }
     }

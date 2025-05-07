@@ -1,7 +1,25 @@
-import React from 'react'
-import logo from '../../assets/logo/darana_logo.png';
+import React, { useEffect, useState } from 'react'
+import logo from '../../assets/logo/darana_logo.png'
+import { Link } from 'react-router'
+import SignUp from '../../pages/SignUp'
+import Login from '../../pages/Login'
 
 function NavBar() {
+    const [loggedin,setLoggedin] = useState(false)
+    function logout(){
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('refresh_token')
+        window.location.href = '/login'
+    } 
+    function handleClick(){   
+        const access = localStorage.getItem('access_token')
+        if (access !== null){
+            setLoggedin(true)
+        }else{
+            setLoggedin(false)
+            logout()  
+        }
+    }
     return (
         <nav className="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
             <div className='navbar-brand'>
@@ -23,16 +41,18 @@ function NavBar() {
                     <a className='button is-light'>
                         EN
                     </a>
-                    <a className="button is-success">
+                    <Link to="/signup" className="button is-success">
                     <strong>Sign up</strong>
-                    </a>
-                    <a className="button is-light">
-                        Log in
-                    </a>
+                    </Link>
+                    <Link to="/"className="button is-light" onClick={handleClick}>
+                            {loggedin? 'Logout' :"Login"}
+                    </Link>
+                    
                 </div>
             </div>
             </div>
         </nav>
+    
     )
 }
 export default NavBar
