@@ -58,7 +58,7 @@ function EditPlace() {
                 console.log('handle submit function is running')
                 const payload = {name, description, city,category, image_url: cloudinaryImgUrl}
                 console.log(payload)
-                const response = authorizedRequest(
+                const response = await authorizedRequest(
                     'patch',
                     `${import.meta.env.VITE_BASE_URL}places/${id}/`,
                     payload

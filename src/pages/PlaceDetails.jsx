@@ -27,7 +27,7 @@ function PlaceDetails() {
     async function deleteCity(){
         try{
             const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}places/${id}/`)
-            if(response.status === 202){
+            if(response.status === 200){
                 navigate("/places")
             }
         }catch(error){

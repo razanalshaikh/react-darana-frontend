@@ -1,5 +1,5 @@
 import axios from "axios"
-
+import { toast } from "react-toastify"
 const baseUrl = import.meta.env.VITE_BASE_URL
 
 function setTokens({ access, refresh }) {
@@ -48,6 +48,7 @@ async function authorizedRequest(method, url, data = null) {
                 return retriedResponse
             } catch (err) {
                 console.log(err)
+                toast.error("Unauthorized access")
                 window.location.href = '/login'
             }
             

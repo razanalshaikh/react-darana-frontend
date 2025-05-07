@@ -35,8 +35,11 @@ function CityDetails() {
                 'delete',
                 `cities/${id}/`
             )
-            if(response.status === 202){
-                navigate('/cities')
+            if(response.status === 200){
+                toast.success('City Deleted Successfully!')
+                setTimeout(()=>{
+                    navigate('/cities')
+                },4000)
             }
         }catch(error){
             if(error.request.status === 401){

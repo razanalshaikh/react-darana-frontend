@@ -11,7 +11,7 @@ function AddCity() {
     const [description,setDescription] = useState('')
     const navigate = useNavigate()
     const [imageFile, setImageFile] = useState(null)
-
+    
     async function handleSubmit() {
         event.preventDefault()
         console.log(imageFile)
@@ -32,7 +32,7 @@ function AddCity() {
         try{
             console.log('handle submit function is running')
             const payload = {name, description, image_url: cloudinaryImgUrl}
-            const response = authorizedRequest(
+            const response = await authorizedRequest(
                 'post',
                 `cities/`,
                 payload

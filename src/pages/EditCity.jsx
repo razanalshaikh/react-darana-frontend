@@ -5,13 +5,15 @@ import CityForm from '../components/CityForm/CityForm'
 import { ToastContainer, toast } from 'react-toastify'
 import { authorizedRequest } from '../lib/api'
 
+
 function EditCity() {
     const {id} = useParams()
     const [name,setName] = useState('')
     const [description, setDescription] = useState('')
     const [imageURL,setImageURL] = useState('')
     const [imageFile, setImageFile] = useState(null)
-    
+
+
     const navigate = useNavigate()
 
     async function getCurrentCityData() {
@@ -56,7 +58,7 @@ function EditCity() {
             try{
                 console.log('handle submit function is running')
                 const payload = {name, description, image_url: cloudinaryImgUrl}
-                const respone = authorizedRequest(
+                const respone = await authorizedRequest(
                     'patch',
                     `cities/${id}/`,
                     payload
@@ -78,7 +80,7 @@ function EditCity() {
                 }
             }
         }else{
-            try{    
+            try{             
                 const response = authorizedRequest(
                     'patch',
                     `cities/${id}/`,
@@ -118,7 +120,7 @@ function EditCity() {
                 handleSubmit = {handleSubmit}
                 setImageFile={setImageFile}
             />
-                <ToastContainer position='top-center'/>
+            <ToastContainer position='top-center'/>
         </div>
     )
 }
