@@ -63,6 +63,9 @@ You can find the backend code here: [Backend Repository Link](https://github.com
 ## ERD Diagram
 ![ER](Wireframes/DaranaER.jpg)
 
+## Project Planning using Github 
+![plan](screenshots/projectplan.jpg)
+
 ## Screenshots for website
 | Description | Screenshot                              |
 | ----------- | --------------------------------------- |
