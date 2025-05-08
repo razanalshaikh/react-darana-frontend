@@ -35,7 +35,7 @@ This repository contains the frontend codebase of the application, built using R
 - **Cloudinary** – use to uplaod images to cloud.
 
 ## Backend Repository
-You can find the backend code here: [Backend Repository Link](https://git.generalassemb.ly/razanalshaikh/django-darana-backend.git)
+You can find the backend code here: [Backend Repository Link](https://github.com/razanalshaikh/django-darana-backend.git)
 
 
 ## Installation Instructions
