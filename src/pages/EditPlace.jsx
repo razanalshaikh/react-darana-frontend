@@ -60,7 +60,7 @@ function EditPlace() {
                 console.log(payload)
                 const response = await authorizedRequest(
                     'patch',
-                    `${import.meta.env.VITE_BASE_URL}places/${id}/`,
+                    `places/${id}/`,
                     payload
                 )
                 if(response.status === 200){
