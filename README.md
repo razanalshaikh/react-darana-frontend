@@ -35,12 +35,13 @@ This repository contains the frontend codebase of the application, built using R
 - **Cloudinary** – use to uplaod images to cloud.
 
 ## Backend Repository
-You can find the backend code here: [Backend Repository Link](https://git.generalassemb.ly/razanalshaikh/django-darana-backend.git)
+You can find the backend code here: [Backend Repository Link](https://github.com/razanalshaikh/django-darana-backend.git)
+
 
 ## Installation Instructions
 ### Run Locally
 1. Clone the repository:  
-  ` git clone https://git.generalassemb.ly/razanalshaikh/react-darana-frontend.git `
+  ` git clone https://github.com/razanalshaikh/react-darana-frontend.git `
 2. Navigate to the project directory
     `cd react-darana-frontend`
 3. Install dependencies: 
@@ -49,8 +50,23 @@ You can find the backend code here: [Backend Repository Link](https://git.genera
     `npm start`
 5. Run the project
     `npm run dev`
-    
-## Screenshots
+
+## Wireframes for the main pages of the app
+| Description | Screenshot                               |
+| ----------- | ---------------------------------------  |
+| Homepage    | ![Homepage](Wireframes/homepage.jpg)     |
+| Cities Page  | ![cities](Wireframes/cities.jpg)        |
+| City Details Page  | ![cityDetails](Wireframes/city_detail.jpg)  |
+| Places Page   | ![places](Wireframes/places.jpg)       |
+| Place Details Page  | ![cities](Wireframes/place_detail.jpg) |
+
+## ERD Diagram
+![ER](Wireframes/DaranaER.jpg)
+
+## Project Planning using Github 
+![plan](Wireframes/projectplan.jpg)
+
+## Screenshots for website
 | Description | Screenshot                              |
 | ----------- | --------------------------------------- |
 | Homepage    | ![Homepage](screenshots/HomePageFrontend.jpg)   |
